@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMPLOYEE DATA</title>
+    <link rel="stylesheet" href="/styles/ADMIN.css">
+    <style>
+        main {
+            display: grid;
+            grid-template-rows: auto 1fr auto; /* Three rows within main content: search form, employee table, pagination */
+            gap: 20px; /* Spacing between grid rows within main */
+        }
+
+        /* Specific styling for individual sections */
+        #search-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.1); /* Example background color */
+            padding: 20px; /* Padding within search form */
+        }
+
+        #employee-table {
+            overflow: auto; /* Enable scrolling if content exceeds container */
+            min-height: 50vh; /* Limit height and enable vertical scrolling */
+        }
+
+         #pagination-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff9d; /* Ensure visibility against the main content */
+            padding: 10px 0; /* Padding for pagination links */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for separation effect */
+            margin: 15px;
+        }
+
+        table{
+            margin: auto;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="heading"></div>
+<div class="nav">
+    <div class="itemsr" id="item0">
+        <a href="/admin/home"><img src="../images/logo.png" id="logo"></a>
+    </div>
+    <div class="items" id="item1">
+        <a href="/admin/bloodreserves" id="BR"><h3>BloodReserves</h3></a>
+    </div>
+    <div class="items" id="item2">
+        <a href="/admin/donordata" id="DD"><h3>Donor's data</h3></a>
+    </div>
+    <div class="items" id="item3">
+        <a href="/admin/recipientData" id="RD"><h3>Recipient's Data</h3></a>
+    </div>
+    <div class="items" id="item4">
+        <a href="/admin/EmployeeDashboard" id="ED"><h3>Employee Data</h3></a>
+    </div>
+    <div class="items" id="item5">
+        <a href="/admin/medicalprofessional" id="AE"><h3>Medical Professional</h3></a>
+    </div>
+    <div class="items" id="item5">
+        <a href="/admin/new-employee" id="AE"><h3>Add Employee</h3></a>
+    </div>
+</div>
+<div style="display: flex;align-items: center; justify-content: end;">
+<a class="NavLink" href="/admin/home">Home</a>
+<a class="NavLink" href="/admin/new-medicalprofessional">New Medical Professional</a>
+
+</div>
+
+<main>
+<div id="search-form">
+    <h1 style="color: white;">Medical Professionals</h1>
+<form action="/admin/medicalprofessional">
+    <input style="padding: 15px; border-radius: 10px 0 0 10px; border: none;" type="text" placeholder="search User name,email,mobile" name="search">
+    <input style="padding: 15px; border-radius: 0px 10px 10px 0px;border: none;background-color: rgb(136, 8, 8);color: white;cursor: pointer;" type="submit" value="Search">
+</form>
+</div>
+<div id="employee-table" class="tableHide1">
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Image</th>
+            <th>Verified</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        <%
+        if(employees.length > 0){
+            for(let i=0;i<employees.length;i++){
+                %>
+                <tr>
+                    <td><%=employees[i].name%></td>
+                    <td><%=employees[i].email%></td>
+                    <td><%=employees[i].mobile%></td>
+                    <td><img src="/medicalProfessionalImages/<%=employees[i].image%>" alt="<%=employees[i].image%>" width="100px" height="100px"></td>
+                    <td>
+                        <%
+                        if(employees[i].is_varified ===0){
+                            %>
+                            <p>Not Verified</p>
+                            <%
+                        }else{
+                            %>
+                            <p>Verified</p>
+                            <%
+                        }
+                        %>
+                    </td>
+                    <td><a href="/admin/edit-mp?id=<%=employees[i]._id%>">Edit</a></td>
+                    <td><a href="/admin/delete-mp?id=<%=employees[i]._id%>">Delete</a></td>
+                </tr>
+                <%
+            }
+        }else{
+            %>
+            <tr>
+                <td colspan="7">employees Not Found</td>
+            </tr>
+            <%
+        }
+        %>
+    </table>
+</div>
+</main>
+<div id="pagination-links">
+    <a class="NavLink" href="?page=<%=previous%>">Prev</a>
+    <%
+    for(let j = 1;j<=totalPages;j++){
+        %>
+        <a class="NavLink" id="page<%=j%>" href="?page=<%=j%>"><%=j%></a>
+        <%
+    }
+    %>
+    <a class="NavLink" href="?page=<%= next %>">Next</a>
+</div>
+
+<div id="loading-popup">
+    <div class="loader"></div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let pag = document.getElementById("page<%=currentPage%>");
+        if (pag) {
+            pag.style.boxShadow = 'rgba(136, 0, 0, 0.419) 1px 5px 5px 2.5px';
+        }
+    });
+</script>
+
+<script src="ADMIN.js"></script>
+</body>
+</html>

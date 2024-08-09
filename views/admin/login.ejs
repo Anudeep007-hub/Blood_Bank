@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/bloodbank.css">
+    <link rel="stylesheet" href="../styles/ADMIN.css">
+    <style>
+        /* #form-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        } */
+    </style>
+<body>
+<%- include('../layouts/header.ejs') %>
+    <form class="form" id="" action="" method="post">
+    <div id="form-container">
+            <h3 style="color: white;">ADMIN LOGIN</h3>
+            <br>
+            <input type="email" name="email" id="usrId" placeholder="Admin Id" required>
+            <br>
+            <input type="password" name="password" id="pswd" placeholder="Password" required>
+            <br>
+            <button type="submit">Submit</button>
+    <div style="margin: 20px;"><a style="color: white;" href="/admin/forget">forget password</a></div>
+    <div style="color: white;">
+       <%
+       if(typeof message !== 'undefined'){
+           %>
+           <p style="color:white;"><%= message %></p>
+           <%
+       }
+        %>
+   </div>      
+</div>
+</form>
+    <script src="../scripts/ADMIN.js">
+    </script>
+
+    <%- include('../layouts/footer.ejs') %>
+</form>
+</body>
+</html>

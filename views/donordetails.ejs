@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Details</title>
+    <link rel="stylesheet" href="styles/medicalprofessional.css">
+</head>
+<body>
+    <div>
+        <% items.forEach(item => { %>
+            <p>Name = <%= item.name %></p>
+            <p>Blood Group = <%= item.bgroup %></p>
+            <p>Address = <%= item.address %></p>
+            <!-- Form for updating doctor's name -->
+            <form method="POST" action="/update-doctor">
+                <input type="hidden" name="donorName" value="<%= item.name %>">
+                <label for="doctorName">Doctor's Name:</label>
+                <input type="text" id="doctorName" name="doctorName" required>
+                <button type="submit" class="classbutton">Update Doctor</button>
+            </form>
+            <hr>
+        <% }); %>
+    </div>
+</body>
+</html>

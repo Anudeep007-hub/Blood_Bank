@@ -1,0 +1,62 @@
+<!-- supportteam.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Team - User Feedbacks</title>
+    <link rel="stylesheet" href="../styles/supportteam.css">
+    <style>
+        /* Add your additional CSS styles here */
+        .feedback-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        .feedback-table th, .feedback-table td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .feedback-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="heading"></div>
+    <div class="nav">
+        <div class="itemsr" id="item0">
+            <a href="/support-team/home"><img src="../images/logo.png" id="logo"></a>
+        </div>
+        <div class="items" id="item1">
+            <a href="/support-team/home" id="BR"><h3>MyProfile</h3></a>
+        </div>
+        <div class="items" id="item2">
+            <a href="/support-team/history" id="DD"><h3>History</h3></a>
+        </div>
+    </div>
+    <h1>Welcome on support team</h1>
+    <h2>User Feedbacks</h2>
+    <table class="feedback-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Trouble</th>
+                <!-- Add more headers here if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            <% userFeedbacks.forEach(feedback => { %>
+                <tr>
+                    <td><%= feedback.user %></td>
+                    <td><%= feedback.trouble %></td>
+                    <!-- Add more cells here if needed -->
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

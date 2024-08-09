@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/bloodbank.css">
+    <link rel="stylesheet" href="../styles/ADMIN.css">
+<body>
+<%- include('../layouts/header.ejs') %>
+<form class="form" id="log" action="/medicalprofessional/login" method="post">
+ <div id="form-container">
+  <h1>Medical Login</h1>
+    <input type="email" name="email" placeholder="Enter email">
+    <br>
+    <br>
+    <input type="password" name="password" id="" placeholder="Enter password">
+    <br>
+    <br>
+    <input type="submit">
+<h3><a href="/medicalprofessional/forget">Forget password</a></h3>
+
+<h3><a href="/medicalprofessional/verification">Verification</a></h3>
+<br>
+<%
+  if(typeof message != 'undefined'){
+    %>
+     <h4><%=message%></h4>
+    <%
+  } 
+ %>
+</div>
+</form>
+<%- include('../layouts/footer.ejs') %>
+</form>
+</body>
+</html>

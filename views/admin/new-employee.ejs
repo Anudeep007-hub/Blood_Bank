@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD EMPLOYEE</title>
+    <style>
+        body.AE {
+            background-color: rgb(63,57,57);
+            color: black;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .edit-profile-AE h2 {
+            color: red;
+            text-align: center;
+        }
+
+        .edit-profile-AE {
+            width: 45%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        .profile-picture-AE {
+            width: 175px;
+            height: 175px;
+            border: 2px solid black;
+            border-radius: 5%;
+            overflow: hidden;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .profile-picture-AE img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .input-container-AE {
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        input.AE {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input.AE + label {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: #ccc;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        .input-container-AE:focus-within input.AE + label,
+        input.AE:not(:placeholder-shown) + label {
+            top: -10px;
+            font-size: 12px;
+            color: rgb(136, 8, 8);
+            z-index: 1; 
+        }
+
+        .personal-info-AE button[type="submit"] {
+            display: block;
+            width: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        select.AE {
+            padding: 10px;
+            width: 45%;
+        }
+
+        .personal-info-AE button[type="submit"]:hover {
+            background-color: black;
+        }
+
+        .shift-container-AE {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        a {
+        display: block;
+        text-align: center;
+        color: red;
+        text-decoration: none;
+        margin-top: 20px;
+         }
+    </style>
+</head>
+<body class="AE">
+<div class="edit-profile-AE">
+    <h2>ADD EMPLOYEE</h2>
+    <form action="/admin/new-employee" method="post" id="edit-profile-form-AE" enctype="multipart/form-data">
+        <br>
+        <div class="profile-picture-AE">
+            <img id="uploaded-image-AE" src="">
+            <p> Upload image</p>
+        </div>
+        <div class="input-container-AE">
+            <input type="file" id="profile-picture-input-AE" class="AE" accept="image/*" onchange="displayImage()" name="image">
+            <label for="profile-picture-input-AE">Profile Picture</label>
+        </div>
+           <div class="personal-info-AE">
+            <div class="input-container-AE">
+                <input type="text" id="edit-username-AE" class="AE" name="username" placeholder="">
+                <label for="edit-username-AE">Username</label>
+            </div>
+            <div class="input-container-AE">
+                <input type="text" id="edit-name-AE" class="AE" name="name" placeholder=" ">
+                <label for="edit-name-AE">Name</label>
+            </div>
+            <br><br>
+
+            <div class="input-container-AE">
+                <input type="email" id="edit-email-AE" class="AE" name="email" placeholder=" ">
+                <label for="edit-email-AE">Email</label>
+            </div>
+            <br><br>
+
+            <div class="input-container-AE">
+                <input type="tel" id="edit-phone-AE" class="AE" name="phone" placeholder=" ">
+                <label for="edit-phone-AE">Phone</label>
+            </div>
+            <br><br>
+
+            <div class="input-container-AE">
+                <input type="text" id="edit-address-AE" class="AE" name="address" placeholder=" ">
+                <label for="edit-address-AE">Address</label>
+            </div>
+            <br><br>
+
+            <div class="input-container-AE">
+                <label for="edit-emergency-contact-AE">Emergency Contact:</label>
+                <input type="text" id="edit-emergency-contact-AE" class="AE" name="emergencycontact" placeholder="Emergency Contact Information">
+                <br><br>
+            </div>
+
+            <div class="input-container-AE">
+                <label for="edit-emergency-contact-AE">Licence:</label>
+                <input type="text" id="edit-emergency-contact-AE" class="AE" name="license" placeholder="Licence">
+                <br><br>
+            </div>
+
+            <div class="input-container-AE">
+                <label for="edit-emergency-contact-AE">Bio:</label>
+                <input type="text" id="edit-emergency-contact-AE" class="AE" name="bio" placeholder="Bio">
+                <br><br>
+            </div>
+            <div class="input-container-AE">
+                <label for="edit-emergency-contact-AE">Skills:</label>
+                <input type="text" id="edit-emergency-contact-AE" class="AE" name="skills" placeholder="Skills">
+                <br><br>
+            </div>
+
+            <div class="shift-container-AE"> 
+                <label for="edit-shift-AE">Shift Schedule:</label>
+                <select id="edit-shift-AE" class="AE" name="shiftschedule">
+                    <option value="9:00 AM - 5:00 PM">9:00 AM - 5:00 PM</option>
+                    <option value="1:00 PM - 9:00 PM">1:00 PM - 9:00 PM</option>
+                    <option value="10:00 PM - 6:00 AM">10:00 PM - 6:00 AM</option>
+                </select>
+            </div>
+            <br><br>
+            <!-- <div class="shift-container-AE"> 
+                <label for="edit-shift-AE">Role:</label>
+                <select id="edit-shift-AE" class="AE" name="role">
+                    <option value="admin">admin</option>
+                    <option value="donor">donor</option>
+                    <option value="employee">employee</option>
+                    <option value="medic">medic</option>
+                    <option value="support">support</option>
+                </select>
+            </div> -->
+            <br><br>
+            <button type="submit">ADD</button>
+        </div>
+    </form>
+    <%
+    if(typeof message !== 'undefined'){
+        %>
+        <p style="color: red;"><%= message %></p>
+        <%
+    }
+     %>
+     <div style="display: flex;justify-content: center;">
+     <a href="/admin/EmployeeDashboard">Go back</a>
+    </div>
+</div>
+<script>
+    // Function to display the selected image in the profile picture area
+    function displayImage() {
+        const fileInput = document.getElementById('profile-picture-input-AE');
+        const uploadedImage = document.getElementById('uploaded-image-AE');
+
+        if (fileInput.files && fileInput.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                uploadedImage.src = e.target.result; // Set the source of the image to the uploaded file
+            };
+
+            reader.readAsDataURL(fileInput.files[0]); // Read the uploaded file as a data URL
+        } else {
+            uploadedImage.src = ''; // Clear the image source if no file is selected
+        }
+    }
+</script>
+<script src="../scripts/ADMIN.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/bloodbank.css">
+<body>
+  <%- include('../layouts/header.ejs') %>
+
+<%
+  if(typeof message != 'undefined'){
+    %>
+     <h4><%=message%></h4>
+    <%
+  } 
+ %>
+<form class="form" action="/login" method="post" id="log">
+  <h1 style="color:aliceblue">Login</h1>
+    <input type="email" name="email" placeholder="Enter email">
+    <br>
+    <br>
+    <input type="password" name="password" id="" placeholder="Enter password">
+    <br>
+    <br>
+    <input type="submit">
+    <h3>Forget password <a href="/forget">Forget password</a></h3>
+    <h3>Don't have account? <a href="/register">Sign in</a></h3>
+    <h3><a href="/verification">Verification</a></h3>
+</form>
+
+<%- include('../layouts/footer.ejs') %>
+</body>
+</html>

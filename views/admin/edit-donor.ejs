@@ -1,0 +1,111 @@
+<% include('../layouts/header.ejs') %>
+
+<style>
+    body {
+        background-color: rgb(63, 57, 57);
+        color: black;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .edit-profile-container {
+        width: 45%;
+        margin: 50px auto;
+    }
+
+    .edit-profile {
+        padding: 20px;
+        background-color: white;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+
+    .edit-profile h1 {
+        color: red;
+        text-align: center;
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        font-size: 16px;
+        color: rgb(136, 8, 8);
+        margin-bottom: 5px;
+    }
+
+    button[type="submit"] {
+        display: block;
+        width: 150px;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: black;
+    }
+
+    a {
+        display: block;
+        text-align: center;
+        color: red;
+        text-decoration: none;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="edit-profile-container">
+    <div class="edit-profile">
+        <h1>Edit Donor</h1>
+
+        <form action="/admin/edit-donor" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter Name" value="<%= donor.name %>" required>
+            <br><br>
+
+            <label for="bgroup">Blood Group</label>
+            <select id="bgroup" name="bgroup" required>
+                <option value="AB-Ve" <% if (donor.bgroup === 'AB-Ve') { %>selected<% } %>>AB-Ve</option>
+                <option value="AB+Ve" <% if (donor.bgroup === 'AB+Ve') { %>selected<% } %>>AB+Ve</option>
+                <option value="A-Ve" <% if (donor.bgroup === 'A-Ve') { %>selected<% } %>>A-Ve</option>
+                <option value="A+Ve" <% if (donor.bgroup === 'A+Ve') { %>selected<% } %>>A+Ve</option>
+                <option value="B-Ve" <% if (donor.bgroup === 'B-Ve') { %>selected<% } %>>B-Ve</option>
+                <option value="B+Ve" <% if (donor.bgroup === 'B+Ve') { %>selected<% } %>>B+Ve</option>
+                <option value="O-Ve" <% if (donor.bgroup === 'O-Ve') { %>selected<% } %>>O-Ve</option>
+                <option value="O+Ve" <% if (donor.bgroup === 'O+Ve') { %>selected<% } %>>O+Ve</option>
+            </select>
+            <br><br>
+
+            <label for="address">Address</label>
+            <textarea id="address" name="address" placeholder="Enter Address" required><%= donor.address %></textarea>
+            <br><br>
+<!-- 
+            <label for="doctor">Doctor</label>
+            <input type="text" id="doctor" name="doctor" placeholder="Enter Doctor" value="<%= donor.doctor %>">
+            <br><br> -->
+
+            <input type="hidden" name="id" value="<%= donor._id %>">
+            <button type="submit">Update Donor</button>
+        </form>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <a href="/admin/donordata">Go to Donor Dashboard</a>
+    </div>
+</div>
+
+<% include('../layouts/footer.ejs') %>

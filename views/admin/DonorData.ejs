@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Data</title>
+    <link rel="stylesheet" href="/styles/ADMIN.css">
+    <style>
+        main {
+            display: grid;
+            grid-template-rows: auto 1fr auto; /* Three rows within main content: search form, donor table, pagination */
+            gap: 20px; /* Spacing between grid rows within main */
+        }
+
+        #search-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        #donor-table {
+            overflow: auto;
+            min-height: 50vh;
+        }
+
+        #pagination-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff9d;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+        }
+
+        table {
+            margin: auto;
+        }
+
+        .not-found {
+            text-align: center;
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="heading"></div>
+<div class="nav">
+    <div class="itemsr" id="item0">
+        <a href="/admin/home"><img src="../images/logo.png" id="logo"></a>
+    </div>
+    <div class="items" id="item1">
+        <a href="/admin/bloodreserves" id="BR"><h3>Blood Reserves</h3></a>
+    </div>
+    <div class="items" id="item2">
+        <a href="/admin/donordata" id="DD"><h3>Donor's data</h3></a>
+    </div>
+    <div class="items" id="item3">
+        <a href="/admin/recipientData" id="RD"><h3>Recipient's Data</h3></a>
+    </div>
+    <div class="items" id="item4">
+        <a href="/admin/EmployeeDashboard" id="ED"><h3>Employee Data</h3></a>
+    </div>
+    <div class="items" id="item5">
+        <a href="/admin/medicalprofessional" id="AE"><h3>Medical Professional</h3></a>
+    </div>
+    <div class="items" id="item6">
+        <a href="/admin/new-employee" id="AE"><h3>Add Employee</h3></a>
+    </div>
+</div>
+
+<main>
+    <div id="search-form">
+        <h1 style="color: white;">Donor Data</h1>
+        <form action="/admin/donordata" method="GET">
+            <input type="text" style="padding: 15px; border-radius: 10px 0 0 10px; border: none;" placeholder="Search by name, gender, age, phone, blood group, ID number" name="search">
+            <button style="padding: 15px; border-radius: 0px 10px 10px 0px;border: none;background-color: rgb(136, 8, 8);color: white;cursor: pointer;" type="submit">Search</button>
+        </form>
+    </div>
+
+    <div id="donor-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Blood Group</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>ID Type</th>
+                    <th>ID Number</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (donors.length > 0) { %>
+                    <% donors.forEach(donor => { %>
+                        <tr>
+                            <td><%= donor.name %></td>
+                            <td><%= donor.bgroup %></td>
+                            <td><%= donor.gend %></td>
+                            <td><%= donor.age %></td>
+                            <td><%= donor.phone %></td>
+                            <td><%= donor.address %></td>
+                            <td><%= donor.ID %></td>
+                            <td><%= donor.idnumber %></td>
+                            <td>
+                                <a href="/admin/edit-donor?id=<%= donor._id %>">Edit</a>
+                            </td>
+                            <td>
+                                <a href="/admin/delete-donor?id=<%= donor._id %>">Delete</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="9" class="not-found">No donors found</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="pagination-links">
+        <% if (totalPages > 0) { %>
+            <a class="NavLink" href="?page=<%= previous %>">Prev</a>
+            <% for (let j = 1; j <= totalPages; j++) { %>
+                <a class="NavLink" id="page<%= j %>" href="?page=<%= j %>"><%= j %></a>
+            <% } %>
+            <a class="NavLink" href="?page=<%= next %>">Next</a>
+        <% } %>
+    </div>
+</main>
+
+<div id="loading-popup">
+    <!-- Loading spinner or animation -->
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let pag = document.getElementById("page<%= currentPage %>");
+        if (pag) {
+            pag.style.boxShadow = 'rgba(136, 0, 0, 0.419) 1px 5px 5px 2.5px';
+        }
+    });
+</script>
+<script src="ADMIN.js"></script>
+</body>
+</html>

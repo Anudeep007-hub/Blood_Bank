@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Reserves</title>
+    <link rel="stylesheet" href="/styles/ADMIN.css">
+    <style>
+
+
+.grid-container{
+    position: absolute;
+    left: 8vw;
+}
+/* Styling for each box inside the Container */
+.box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Additional styles for different box types */
+.box1 {
+    background-color: #f5f5f5;
+}
+    </style>
+</head>
+<body>
+<div class="heading"></div>
+<div class="nav">
+    <div class="itemsr" id="item0">
+        <a href="/admin/home"><img src="../images/logo.png" id="logo"></a>
+    </div>
+    <div class="items" id="item1">
+        <a href="/admin/bloodreserves" id="BR"><h3>BloodReserves</h3></a>
+    </div>
+    <div class="items" id="item2">
+        <a href="/admin/donordata" id="DD"><h3>Donor's data</h3></a>
+    </div>
+    <div class="items" id="item3">
+        <a href="/admin/recipientData" id="RD"><h3>Recipient's Data</h3></a>
+    </div>
+    <div class="items" id="item4">
+        <a href="/admin/EmployeeDashboard" id="ED"><h3>Employee Data</h3></a>
+    </div>
+    <div class="items" id="item5">
+        <a href="/admin/medicalprofessional" id="AE"><h3>Medical Professional</h3></a>
+    </div>
+    <div class="items" id="item5">
+        <a href="/admin/new-employee" id="AE"><h3>Add Employee</h3></a>
+    </div>
+</div>
+
+<div class="flex-container">
+<div id="Container" >
+    <h1 class="box hide">
+        <span class="Type">A+</span>
+        <span class="Count">0</span>
+    </h1>
+    <h1 class="box hide">
+        <span class="Type">O+</span>
+        <span class="Count">0</span>
+    </h1>
+    <h1 class="box hide">
+        <span class="Type">B+</span>
+        <span class="Count">0</span>
+    </h1>
+    <h1 class="box hide">
+        <span class="Type">AB+</span>
+        <span class="Count">0</span>
+    </h1>
+    <h1 class="box hide">
+        <span class="Type">A-</span>
+        <span class="Count">0</span>
+    </h1>
+    <h1 class="box hide">
+        <span class="Type">O-</span>
+        <span class="Count">0</span>
+    </h1>
+    <h1 class="box hide">
+        <span class="Type">B-</span>
+        <span class="Count">0</span>
+    </h1>
+    <h1 class="box hide">
+        <span class="Type">AB-</span>
+        <span class="Count">0</span>
+    </h1>
+</div>
+</div>
+<div id="loading-popup">
+    <div class="loader"></div>
+</div>
+
+<script src="ADMIN.js"></script>
+
+</body>
+</html>

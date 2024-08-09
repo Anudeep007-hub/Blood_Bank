@@ -1,0 +1,35 @@
+<% include('../layouts/header.ejs') %>
+
+<h1>Welcome on Home</h1>
+
+<table >
+    <tr>
+        <td><img style="width: 250px;" src="/userImages/<%=user.image%>" alt="<%=user.image%>"></td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td><%= user.name%></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><%= user.email%></td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td><%= user.mobile%></td>
+    </tr>
+    <tr>
+        <td>Verified</td>
+        <td>
+        <% if(user.is_varified == 1){
+            %>
+            <p>Yes</p>
+            <%
+        }
+        %></td>
+    </tr>
+</table>
+<a href="/edit?id=<%=user._id%>">Edit</a>
+<br>
+<a href="/logout">Logout</a>
+<% include('../layouts/footer.ejs') %>

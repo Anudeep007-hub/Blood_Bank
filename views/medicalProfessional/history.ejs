@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMPLOYEE DATA</title>
+    <link rel="stylesheet" href="/styles/medicalprofessional.css">
+    <style>
+        main {
+            display: grid;
+            grid-template-rows: auto 1fr auto; /* Three rows within main content: search form, employee table, pagination */
+            gap: 20px; /* Spacing between grid rows within main */
+        }
+
+        /* Specific styling for individual sections */
+        #search-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.1); /* Example background color */
+            padding: 20px; /* Padding within search form */
+        }
+
+        #employee-table {
+            overflow: auto; /* Enable scrolling if content exceeds container */
+            min-height: 50vh; /* Limit height and enable vertical scrolling */
+        }
+
+         #pagination-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff9d; /* Ensure visibility against the main content */
+            padding: 10px 0; /* Padding for pagination links */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for separation effect */
+            margin: 15px;
+        }
+
+        table{
+            margin: auto;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="heading"></div>
+    <div class="nav">
+        <div class="itemsr" id="item0">
+            <a href="/medicalprofessional/home"><img src="../images/logo.png" id="logo"></a>
+        </div>
+        <div class="items" id="item1">
+            <a href="/medicalprofessional/home" id="BR"><h3>MyProfile</h3></a>
+        </div>
+        <div class="items" id="item2">
+            <a href="/medicalprofessional/unverified" id="DD"><h3>Unverified Donors</h3></a>
+        </div>
+        <!-- <div class="items" id="item3">
+            <a href="/admin/recipientData" id="RD"><h3>Recipient's Data</h3></a>
+        </div>
+        <div class="items" id="item4">
+            <a href="/admin/EmployeeDashboard" id="ED"><h3>Employee Data</h3></a>
+        </div>
+        <div class="items" id="item5">
+            <a href="/admin/medicalprofessional" id="AE"><h3>Medical Professional</h3></a>
+        </div>
+        <div class="items" id="item5">
+            <a href="/admin/new-employee" id="AE"><h3>Add Employee</h3></a>
+        </div> -->
+    </div>
+    
+<div style="display: flex;align-items: center; justify-content: end;">
+<a class="NavLink" href="/medicalprofessional/home">Home</a>
+</div>
+
+<main>
+<div id="search-form">
+    <h1 style="color: white;">Unverified Donors</h1>
+<form action="/admin/medicalprofessional">
+    <input style="padding: 15px; border-radius: 10px 0 0 10px; border: none;" type="text" placeholder="search User name,email,mobile" name="search">
+    <input style="padding: 15px; border-radius: 0px 10px 10px 0px;border: none;background-color: rgb(136, 8, 8);color: white;cursor: pointer;" type="submit" value="Search">
+</form>
+</div>
+    
+
+<!-- Add this section to display history -->
+<div class="history">
+    <h2>History</h2>
+    <ul>
+        <% history.forEach(entry => { %>
+            <li>
+                <%= entry.name %>
+                <%= entry.action %> 
+                <%= entry.time.toLocaleString() %>
+            </li>
+        <% }); %>
+    </ul>
+</div>
+</body>
+</html>

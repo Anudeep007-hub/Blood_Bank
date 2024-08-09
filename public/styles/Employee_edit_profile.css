@@ -1,0 +1,75 @@
+
+body {
+    background-image: linear-gradient(to right,rgb(26, 25, 25),rgb(56, 54, 54));
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+.edit-profile {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.edit-profile h2 {
+    color:rgb(136,8,8);
+    text-align: center;
+}
+
+.profile-picture {
+    width: 175px;
+    height: 175px;
+    border: 2px solid black;
+    border-radius: 5%;
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.personal-info {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.personal-info label {
+    color: rgb(136,8,8);
+}
+
+.personal-info input[type="text"],
+.personal-info input[type="email"],
+.personal-info input[type="tel"],
+.personal-info select {
+    width: 80%;
+    padding: 8px;
+    margin: 5px auto;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+#edit-address{
+    width: 80%;
+    height: 30px;
+}
+.personal-info button[type="submit"] {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: rgb(136,8,8);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.personal-info button[type="submit"]:hover {
+    background-color: black;
+}

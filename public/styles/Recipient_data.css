@@ -1,0 +1,73 @@
+body {
+    background-image: linear-gradient(to right,rgb(26, 25, 25),rgb(56, 54, 54));
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+form {
+    background-color: rgb(136,8,8);
+    color: white;
+    width: 50%;
+    margin: 50px auto;
+    border-radius: 2rem;
+    box-shadow: rgb(0, 0, 0)  6px 6px 6px 6px;
+}
+#data_container{
+    margin: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+form label {
+    display: block;
+    color: white;
+}
+
+form input[type="text"],
+form input[type="tel"],
+form input[type="number"],
+form select,
+form textarea,
+form input[type="date"] {
+    width: calc(100% - 20px); /* Adjusting for padding and border */
+    padding: 8px;
+    margin: 5px 0;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+form select {
+    appearance: none; /* Hides the default arrow in select boxes */
+    padding-right: 30px; /* Provides space for the custom arrow */
+    background: white; /* Sets background color */
+    background-image: linear-gradient(45deg, transparent 50%, black 50%), linear-gradient(135deg, black 50%, transparent 50%); /* Creates the custom arrow */
+    background-position: calc(100% - 10px) calc(50% - 2px), calc(100% - 10px) calc(50% + 2px); /* Positions the arrow */
+    background-size: 5px 5px; /* Sets the size of the arrow */
+    background-repeat: no-repeat; /* Ensures the arrow is not repeated */
+}
+
+form textarea {
+    resize: vertical; /* Allows the textarea to be resized vertically */
+}
+
+form button[type="submit"] {
+    display: block;
+    width: 150px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color:red;
+    color: white;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+    background-color: black;
+}

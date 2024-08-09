@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMPLOYEE DATA</title>
+    <link rel="stylesheet" href="/styles/medicalprofessional.css">
+    <style>
+        main {
+            display: grid;
+            grid-template-rows: auto 1fr auto; /* Three rows within main content: search form, employee table, pagination */
+            gap: 20px; /* Spacing between grid rows within main */
+        }
+
+        /* Specific styling for individual sections */
+        #search-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.1); /* Example background color */
+            padding: 20px; /* Padding within search form */
+        }
+
+        #employee-table {
+            overflow: auto; /* Enable scrolling if content exceeds container */
+            min-height: 50vh; /* Limit height and enable vertical scrolling */
+        }
+
+         #pagination-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff9d; /* Ensure visibility against the main content */
+            padding: 10px 0; /* Padding for pagination links */
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for separation effect */
+            margin: 15px;
+        }
+
+        table{
+            margin: auto;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="heading"></div>
+    <div class="nav">
+        <div class="itemsr" id="item0">
+            <a href="/medicalprofessional/home"><img src="../images/logo.png" id="logo"></a>
+        </div>
+        <div class="items" id="item1">
+            <a href="/medicalprofessional/home" id="BR"><h3>MyProfile</h3></a>
+        </div>
+        <div class="items" id="item2">
+            <a href="/medicalprofessional/unverified" id="DD"><h3>Unverified Donors</h3></a>
+        </div>
+        <!-- <div class="items" id="item3">
+            <a href="/admin/recipientData" id="RD"><h3>Recipient's Data</h3></a>
+        </div>
+        <div class="items" id="item4">
+            <a href="/admin/EmployeeDashboard" id="ED"><h3>Employee Data</h3></a>
+        </div>
+        <div class="items" id="item5">
+            <a href="/admin/medicalprofessional" id="AE"><h3>Medical Professional</h3></a>
+        </div>
+        <div class="items" id="item5">
+            <a href="/admin/new-employee" id="AE"><h3>Add Employee</h3></a>
+        </div> -->
+    </div>
+    
+<div style="display: flex;align-items: center; justify-content: end;">
+<a class="NavLink" href="/medicalprofessional/home">Home</a>
+</div>
+
+<main>
+<div id="search-form">
+    <h1 style="color: white;">Unverified Donors</h1>
+<form action="/admin/medicalprofessional">
+    <input style="padding: 15px; border-radius: 10px 0 0 10px; border: none;" type="text" placeholder="search User name,email,mobile" name="search">
+    <input style="padding: 15px; border-radius: 0px 10px 10px 0px;border: none;background-color: rgb(136, 8, 8);color: white;cursor: pointer;" type="submit" value="Search">
+</form>
+</div>
+<div id="employee-table" class="tableHide1">
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Mobile</th>
+            <th>is_Verified</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        <%
+        if(donors.length > 0){
+            for(let i=0;i<donors.length;i++){
+                %>
+                <tr>
+                    <td><%=donors[i].name%></td>
+                    <td><%=donors[i].gend%></td>
+                    <td><%=donors[i].phone%></td>
+                    <td>
+                        <%
+                        if(donors[i].is_verified_by_mp ===0){
+                            %>
+                            <p>Not Verified</p>
+                            <%
+                        }else{
+                            %>
+                            <p>Verified</p>
+                            <%
+                        }
+                        %>
+                    </td>
+                    <td><button style="color: white; padding: 10px;margin: 5px;border-radius: 10px;background-color: rgb(136, 8, 8)"><a href="/medicalprofessional/accept-mp?id=<%=donors[i]._id%>">Accept</a></button></td>
+                    <td><button style="color: white; padding: 10px;margin: 5px;border-radius: 10px;background-color: rgb(136, 8, 8)"><a href="/medicalprofessional/reject-mp?id=<%=donors[i]._id%>">Reject</a></button></td>
+                </tr>
+                <%
+            }
+        }else{
+            %>
+            <tr>
+                <td colspan="7">employees Not Found</td>
+            </tr>
+            <%
+        }
+        %>
+    </table>
+</div>
+</main>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const acceptButtons = document.querySelectorAll('.accept-btn');
+
+        acceptButtons.forEach(button => {
+            button.addEventListener('click', async function () {
+                const donorId = button.dataset.id;
+                const response = await fetch(`/medicalprofessional/accept-mp?id=${donorId}`, {
+                    method: 'POST', // Or 'PUT'
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ isVerified: true }), // Sending isVerified true
+                });
+
+                if (response.ok) {
+                    // Refresh the page after successful update
+                    window.location.reload();
+                } else {
+                    console.error('Failed to update donor status');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

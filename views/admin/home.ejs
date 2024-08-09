@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN HOME</title>
+    <link rel="stylesheet" href="../styles/ADMIN.css">
+    <style>
+      .edit-profile {
+            width: 45%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        
+    </style>
+
+</head>
+<body>
+<div class="heading"></div>
+<div class="nav">
+    <div class="itemsr" id="item0">
+        <a href="/admin/home"><img src="../images/logo.png" id="logo"></a>
+    </div>
+    <div class="items" id="item1">
+        <a href="/admin/bloodreserves" id="BR"><h3>BloodReserves</h3></a>
+    </div>
+    <div class="items" id="item2">
+        <a href="/admin/donordata" id="DD"><h3>Donor's data</h3></a>
+    </div>
+    <div class="items" id="item3">
+        <a href="/admin/recipientData" id="RD"><h3>Recipient's Data</h3></a>
+    </div>
+    <div class="items" id="item4">
+        <a href="/admin/EmployeeDashboard" id="ED"><h3>Employee Data</h3></a>
+    </div>
+    <div class="items" id="item5">
+        <a href="/admin/medicalprofessional" id="AE"><h3>Medical Professional</h3></a>
+    </div>
+    <div class="items" id="item5">
+        <a href="/admin/support" id="AE"><h3>Support Team</h3></a>
+    </div>
+</div>
+
+<div style="display: block;float: right;"><button id="logout" style="color: white; padding: 10px;margin: 5px;border-radius: 10px;background-color: rgb(136, 8, 8);" onclick="window.location.href='/admin/logout'">Logout</button></div>
+
+<div class="edit-profile" style="color: black;text-align: center;">
+    <h1>Welcome Admin</h1>
+</div>
+<div id="loading-popup">
+    <div class="loader"></div>
+</div>
+
+<script src="../scripts/ADMIN.js">
+</script>
+
+</body>
+</html>

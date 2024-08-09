@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/bloodbank.css">
+<body>
+<%- include('../layouts/header.ejs') %>
+
+
+
+<form action="/support-team/login" method="post">
+  <div id="form-container">
+    <h1>Support Team Login</h1>
+    <input type="email" name="email" placeholder="Enter email">
+    <br>
+    <br>
+    <input type="password" name="password" id="" placeholder="Enter password">
+    <br>
+    <br>
+    <input type="submit">
+    <h3><a href="/support-team/forget">Forget password</a></h3>
+<h3><a href="/support-team/verification">Verification</a></h3>
+<br>
+<%
+  if(typeof message != 'undefined'){
+    %>
+     <h4><%=message%></h4>
+    <%
+  } 
+ %>
+</div>
+</form>
+
+ <%- include('../layouts/footer.ejs') %>

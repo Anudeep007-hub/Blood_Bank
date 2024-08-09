@@ -1,0 +1,69 @@
+<!-- <%- include('../layouts/header.ejs') %> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Professional</title>
+    <link rel="stylesheet" href="../styles/supportteam.css">
+    <style>
+      .edit-profile {
+            width: 45%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        
+    </style>
+
+</head>
+<body>
+<div class="heading"></div>
+<div class="nav">
+    <div class="itemsr" id="item0">
+        <a href="/support-team/home"><img src="../images/logo.png" id="logo"></a>
+    </div>
+    <div class="items" id="item1">
+        <a href="/support-team/home" id="BR"><h3>MyProfile</h3></a>
+    </div>
+    <div class="items" id="item2">
+        <a href="/support-team/history" id="DD"><h3>History</h3></a>
+    </div>
+    <div class="items" id="item2">
+        <a href="/support-team/edit?id=<%=user._id%>" id="DD"><h3>Edit Profile</h3></a>
+    </div>
+    <div class="items" id="item2">
+        <a href="/support-team/logout" id="DD"><h3>Logout</h3></a>
+    </div>
+    
+</div>
+<h1>Welcome on support team</h1>
+<table >
+    <tr>
+        <td>Name</td>
+        <td><%= user.name%></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><%= user.email%></td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td><%= user.mobile%></td>
+    </tr>
+    <tr>
+        <td>Verified</td>
+        <td>
+        <% if(user.is_varified == 1){
+            %>
+            <p>Yes</p>
+            <%
+        }
+        %></td>
+    </tr>
+</table>
+<button style="color: white; padding: 10px;margin: 5px;border-radius: 10px;background-color: rgb(136, 8, 8);"><a href="/support-team/edit?id=<%=user._id%>">Edit</a></button>
+<br>
+<button style="color: white; padding: 10px;margin: 5px;border-radius: 10px;background-color: rgb(136, 8, 8);"><a href="/support-team/logout">Logout</a></button>

@@ -1,0 +1,74 @@
+<!-- <%- include('../layouts/header.ejs') %> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Professional</title>
+    <link rel="stylesheet" href="../styles/medicalprofessional.css">
+    <style>
+      .edit-profile {
+            width: 45%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        
+    </style>
+
+</head>
+<body>
+<div class="heading"></div>
+<div class="nav">
+    <div class="itemsr" id="item0">
+        <a href="/medicalprofessional/login"><img src="../images/logo.png" id="logo"></a>
+    </div>
+    <div class="items" id="item1">
+        <a href="/medicalprofessional/home" id="BR"><h3>MyProfile</h3></a>
+    </div>
+    <div class="items" id="item2">
+        <a href="/medicalprofessional/unverified" id="DD"><h3>Unverified Donors</h3></a>
+    </div>
+    <div class="items" id="item1">
+        <a href="/medicalprofessional/edit?id=<%=user._id%>" id="BR"><h3>EditProfile</h3></a>
+    </div>
+    <div class="items" id="item3">
+        <a href="/medicalprofessional/history" id="RD"><h3>History</h3></a>
+    </div>
+    <div class="items" id="item2">
+        <a href="/medicalprofessional/logout" id="DD"><h3>LogOut</h3></a>
+    </div>
+</div>
+
+<h1>Welcome on Home medicalprofessional</h1>
+
+<table >
+    <tr>
+        <td>Name</td>
+        <td><%= user.name%></td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td><%= user.email%></td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td><%= user.mobile%></td>
+    </tr>
+    <tr>
+        <td>Verified</td>
+        <td>
+        <% if(user.is_varified == 1){
+            %>
+            <p>Yes</p>
+            <%
+        }
+        %></td>
+    </tr>
+</table>
+
+<button style="color: white; padding: 10px;margin: 5px;border-radius: 10px;background-color: rgb(136, 8, 8);"><a href="/medicalprofessional/edit?id=<%=user._id%>">Edit</a></button>
+<br>
+<button style="color: white; padding: 10px;margin: 5px;border-radius: 10px;background-color: rgb(136, 8, 8);"><a href="/medicalprofessional/logout">Logout</a></button>

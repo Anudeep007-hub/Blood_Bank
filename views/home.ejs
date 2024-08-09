@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/bloodbank.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <%- include('./layouts/header.ejs') %>
+<div class="counts">
+    <div class="count" id="count1">Donors Registered<h1 id="numberDisplay1">1</h1></div>
+    <div class="count" id="count2" >Employees Registered<h1 id="numberDisplay2">1</h1></div>
+    <div class="count" id="count3" >Donations Done<h1 id="numberDisplay3">1</h1></div>
+    <div class="count" id="count4" >Blood Units Collected<h1 id="numberDisplay4">1</h1></div>
+  </div>
+    <script src="/scripts/count.js"></script>
+<br><br>
+<div class="section2">
+    <div class="section21">
+    <h1>&nbsp;&nbsp;Compatible Blood Type Donors</h1>
+    <table>
+        <tr>
+            <th>Blood Type</th>
+            <th>Donate Blood To</th>
+            <th>Receive Blood From</th>
+        </tr>
+        <tr>
+            <td>A+</td>
+            <td>A+ A- B+ AB+</td>
+            <td>A+ A- O+ O-</td>
+        </tr>
+        <tr>
+            <td>O+</td>
+            <td>O+ A+ B+ AB+</td>
+            <td>O+ O-</td>
+        </tr>
+        <tr>
+            <td>B+</td>
+            <td>B+ AB+</td>
+            <td>B+ B- O+ O-</td>
+        </tr>
+        <tr>
+            <td>AB+</td>
+            <td>AB+</td>
+            <td>EveryOne</td>
+        </tr>
+        <tr>
+            <td>A-</td>
+            <td>A+ A- AB+ AB-</td>
+            <td>A- O-</td>
+        </tr>
+        <tr>
+            <td>O-</td>
+            <td>EveryOne</td>
+            <td>O-</td>
+        </tr>
+        <tr>
+            <td>B-</td>
+            <td>B+ B- AB+ AB-</td>
+            <td>B- O-</td>
+        </tr>
+        <tr>
+            <td>AB-</td>
+            <td>AB+ AB-</td>
+            <td>AB- A- B- O-</td>
+        </tr>
+    </table>
+    </div>
+    <div class="gallery-container">
+        <div class="gallery">
+            <img class="image active" src="/images/one.jpg" alt="Image 1">
+            <img class="image" src="/images/two.jpg" alt="Image 2">
+            <img class="image" src="/images/three.jpg" alt="Image 3">
+            <button class="prev" onclick="changeImage(-1)"></button>
+            <button class="next" onclick="changeImage(1)"></button>
+        </div>
+        <script src="/scripts/gallery.js"></script>
+    </div>
+</div>
+<video width="90%" height="auto" nocontrols autoplay muted loop>
+    <source src="/videos/blooddonation.mp4" type="video/mp4">
+</video>
+<div class="section3">
+    <img src="/images/download.png" width="20%">
+    <div>
+    <p><h1 id="section31">Why Should I donate Blood</h1>
+    <h3 id="section32" >Donating blood saves lives by providing essential transfusions for surgeries,emergencies, and treating illnesses
+        like cancer. It supports community health, medical research, and personal fulfillment, making it a crucial and
+        rewarding act of generosity.Overall, donating blood is a vital component of healthcare systems worldwide, ensuring that 
+        patients receive the lifesaving treatments they require.
+        Donating blood is an altruistic act that serves a critical purpose in saving lives and maintaining public health. </h3></p>
+    <h3><button onclick="window.location.href='donor/DonorRegistration'" id="section33">Donate Blood</button></h3>
+    <h3><button onclick="window.location.href='/sendfeedback'" id="section33">SendFeedBack</button></h3>
+</div></div>
+<%- include('./layouts/footer.ejs') %>
+</body>
+</html>

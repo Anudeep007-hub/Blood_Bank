@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/Employee_Login.css">
+    <link rel="stylesheet" href="./styles/bloodbank.css">
+</head>
+<body>
+    <%- include('./layouts/header.ejs') %>
+    <div id="login-container">
+        <div id="login">
+            <form class="form" method="post" action="/employeelogin">
+            <h2>Employee Login</h2>
+            <br>
+            <label for="username">UserName</label>
+            <input type="text" id="username" name="username" required>
+            <br><br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <a href="forgot_pass.html">forgot password?</a>
+            <br>
+            <button type="submit">Login</button>
+            <br>
+        </form>
+        </div>
+    </div>
+<%- include('./layouts/footer.ejs') %>
+</body>
+</html>

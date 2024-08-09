@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Portal</title>
+    <link rel="stylesheet" href="../styles/Employee_portal.css">
+    <link rel="stylesheet" href="../styles/Employee_profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="head">
+            <div class="nav-bar">
+                <button type="button" id="Logout" onclick="redirecttohome()">Logout</button>
+            </div>
+            <img src="./images/logo.png" alt="Logo">
+        </div>
+        <h1 id="welcome_employee">Welcome <%= name %></h1>
+    </header>
+    <main>
+        <div class="profile">
+            <h2>Employee Profile</h2>
+                <div class="personal-info">
+                    <p><strong>Name:</strong> <%= name %></p>
+                    <p><strong>Email:</strong> <%= email %></p>
+                    <p><strong>Phone:</strong> <%= phone %></p>
+                    <p><strong>Address:</strong> <%= address %></p>
+                    <p><strong>Shift Schedule:</strong> <%= shiftschedule %></p>
+                    <p><strong>Emergency Contact:</strong> <%= emergencycontact %></p>
+                    <p><strong>Certification/License:</strong> <%= license %></p>
+                    <p><strong>Bio:</strong> <%= bio %></p>
+                    <p><strong>Skills:</strong><% skills.forEach(function(item) { %>
+                        <p><%= item %></p>
+                    <% }); %>
+                    </p>
+                </div>
+        </div>
+        <div class="emp_options">
+        <button type="button" id="Inbox" onclick="redirecttoinbox()"><i class="fas fa-inbox"></i>Inbox</button>
+        <button type="button" id="Recipient_Portal" onclick="redirecttorecipientportal()"><i class="fas fa-globe"></i>Recipient Portal</button>
+        <button type="button" id="Tasks" onclick="redirecttotasks()"><i class="fas fa-tasks"></i>Tasks</button>
+        </div>
+        <script>
+            function redirecttohome(){
+                window.location.href = '/'
+            }
+            function redirecttoemployeeeditprofile(){
+                window.location.href = '/employeeeditprofile'
+            }
+            function redirecttoinbox(){
+                window.location.href = 'https://mail.google.com/mail/u/1/?ogbl#inbox'
+            }
+            function redirecttorecipientportal(){
+                window.location.href = '/recipientportal'
+            }
+            function redirecttotasks(){
+                window.location.href = '/donordetails'
+            }
+        </script>
+    </main>
+    <%- include('./layouts/footer.ejs') %>
+</body>
+</html>

@@ -1,0 +1,171 @@
+body{
+    background-image: linear-gradient(to right,rgb(26, 25, 25),rgb(56, 54, 54));
+    color: white
+}
+
+.form{
+     align-items: center;
+     justify-content: center;
+     display: flex;
+     flex-direction: column;
+     background-color: rgb(136,8,8);
+     width: 40vmin;
+     border-radius: 3rem;
+     padding: 2% 2%;
+     margin: 10% 35%;
+     box-shadow: rgb(0, 0, 0)  6px 6px 6px 6px;
+}
+label{
+    padding: 5px;
+}
+input{
+    border-radius: 0.5rem;
+    width:60%;
+    padding: 3px;
+}
+button{
+    border-radius: 2rem;
+    width:60%;
+    padding: 8px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: rgb(63,57,57);
+}
+button:hover{
+    cursor: pointer;
+    background-color: black;
+}
+.nav{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+}
+#logo{
+    position: absolute;
+    z-index:9;
+    width: 16.359%;
+    height: 18%;
+}
+.items{
+    padding: 30px;
+    position: relative;
+    color: white;
+    background-color: rgb(136, 8, 8);
+}
+#items0{
+    background-color: black;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+.heading{
+    height:20px;
+    width:100%;
+}
+.items:hover{
+    background-color: black;
+}
+.hover-text {
+    position: absolute;
+    bottom: -113px;
+    left: 0;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    width: 96.5%;
+    display: none; 
+}
+.items:hover .hover-text {
+    display: block;
+}
+#text2{
+    bottom: -80px;
+}
+#text3{
+    bottom:-100px;
+}
+#text4{
+    bottom: -80px;
+}
+.image{
+    margin:5px;
+    width:99.3%;
+}
+
+footer {
+    margin-top: 100px;
+    background-color: #333;
+    overflow: hidden;
+}
+footer a {
+    text-decoration: none;
+    padding: 20px;
+    text-align: center;
+    float: left;
+    color: white;
+}
+.scrolling-headlines {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+.headline {
+    display: inline-block;
+    padding: 0 20px;
+    animation: scroll 15s linear infinite;
+}
+.container {
+    font-family: Arial, sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+.section {
+    background-color:#333;
+    border-radius: 5px;
+    padding: 20px;
+}
+.section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.section ul {
+    list-style: none;
+    padding: 0;
+}
+.section li {
+    margin-bottom: 5px;
+}
+.wrapper{
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+.scrolling-headlines {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.headline {
+    display: inline-block;
+    padding: 0 20px;
+    animation: scroll 10s linear infinite;
+  }
+  @keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+}
